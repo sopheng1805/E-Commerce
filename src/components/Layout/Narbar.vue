@@ -1,6 +1,14 @@
 <template>
-    <header>
-        <div class="w-full flex items-center bg-pink-200 px-4 py-2 md:px-8 lg:px-10 position-sticky z-index">
+    <header class="sticky top-0 z-index">
+        <div v-if="isLoading" class="fixed inset-0 z-[9999] bg-black flex flex-col justify-center items-center">
+            <!-- Spinner -->
+            <div class="w-16 h-16 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
+
+            <!-- Text -->
+            <h4 class="text-white text-xl mt-4">Loading...</h4>
+        </div>
+
+        <div class="w-full flex items-center bg-pink-200 px-4 py-2 md:px-8 lg:px-10 ">
             
             <!-- logo -->
             <div class="flex justify-start items-center gap-2 pl-19 pr-60">
@@ -33,10 +41,19 @@
 </template>
 
 <script setup>
+import { onMounted, ref } from 'vue';
 import Banner from '../banner/Banner.vue';
 import Card from '../categories/Card.vue';
 import Rating from '../categories/Rating.vue';
 import Footer from './Footer.vue';
+
+const isLoading = ref(true)
+
+onMounted(() => {
+    setTimeout(() => {
+        isLoading.value = false
+    }, 1000) // 3 seconds loading
+})
 
     const menu = [
         {link:"/home",name:"Home"},
