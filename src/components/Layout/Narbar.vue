@@ -8,7 +8,7 @@
             <h4 class="text-white text-xl mt-4">Loading...</h4>
         </div>
 
-        <div class="w-full flex items-center bg-pink-200 px-4 py-2 md:px-8 lg:px-10 ">
+        <div class="w-full flex items-center bg-pink-200 px-4 py-2 md:px-8 lg:px-10 shadow-lg rounded-4xl">
             
             <!-- logo -->
             <div class="flex justify-start items-center gap-2 pl-19 pr-60">
