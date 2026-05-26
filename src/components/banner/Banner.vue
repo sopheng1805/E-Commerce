@@ -2,6 +2,7 @@
     <section class="w-full h-[600px] md:flex-wrap">
         <!-- banner-main -->
         <div class="flex">
+            <!-- <img src="https://i.pinimg.com/1200x/c6/5f/82/c65f82324a024e1f99668df72f142da8.jpg" alt=""> -->
             <!-- Left -->
             <div class="bg-pink-300 w-[65%] h-[600px] py-30 px-30">
                 <p class="text-pink-500 font-bold py-2">NEW COLLECTION</p>   

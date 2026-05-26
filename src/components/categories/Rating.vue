@@ -12,7 +12,7 @@
             shadow-2xl rounded-xl overflow-hidden h-[410px]">
                 <!-- card header -->
                 <div class="w-full h-[70%]">
-                    <img class="w-full h-full object-fit-cover" 
+                    <img class="w-full h-full object-fit-cover hover:scale-110 ease-in-out duration-300" 
                     :src="item.image" :alt="item.title">
                 </div>
                 <!-- card body -->

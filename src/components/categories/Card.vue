@@ -23,7 +23,8 @@
         <!-- card header -->
         <div class="w-full h-[70%]">
           <img
-            class="w-full h-full object-cover"
+            class="w-full h-full object-cover
+            hover:scale-110 ease-in-out duration-300"
             :src="item.image"
             :alt="item.title"
           >

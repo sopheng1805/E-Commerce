@@ -1,5 +1,5 @@
 <template>
-    <header class="sticky top-0 z-index bg-pink-200">
+    <header class="sticky top-0  z-1000 bg-pink-200">
         <div v-if="isLoading" class="fixed inset-0 z-[9999] bg-black flex flex-col justify-center items-center">
             <!-- Spinner -->
             <div class="w-16 h-16 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
@@ -11,15 +11,16 @@
         <div class="w-full flex items-center bg-pink-200 px-4 py-2 md:px-8 lg:px-10 shadow-lg rounded-4xl">
 
             <!-- logo -->
-            <div class="flex justify-start items-center gap-2 pl-19 pr-60">
+            <div class="flex justify-start items-center gap-2 pl-19 pr-60 cursor-pointer">
                 <img class="w-15 h-15 rounded-[50%]" src="/src/assets/image/hero/logo.png" alt="">
                 <a href="" class="text-black lg:text-3xl md:text-3xl text-2xl font-bold">GENZ-BEUTY</a>
             </div>
 
+            <!-- item -->
             <div class="gap-16">
                 <ul class="hidden items-center lg:flex pr-20">
                     <li class="px-5 py-2 rounded-xl hover:underline cursor-pointer
-                    text-xlx font-semibold" v-for="item in menu" :key="item.name">
+                    text-xlx font-semibold hover:text-blue-900" v-for="item in menu" :key="item.name">
                         <a :href="item.link">{{ item.name }}</a>
                     </li>
                 </ul>
