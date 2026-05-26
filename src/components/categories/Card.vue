@@ -1,71 +1,71 @@
 <template>
-    <div class="w-full h-auto lg:px-24 md:px-6 px-4 py-10 position-absolute bg-pink-200">
+  <div class="w-full h-auto lg:px-24 md:px-6 px-4 py-10 bg-pink-200">
 
-        <!-- title -->
-        <div class="flex justify-between">
-          <h1 class="font-bold text-3xl text-center">Product List</h1>
-          <h1 class="cursor-pointer shadow-xl rounded-xl px-3 py-2 hover:bg-pink-600
-           hover:text-white">View All</h1>
-        </div>
-        
-        <!-- main card -->
-        <div class="w-full pt-10 flex gap-8 flex-wrap">
-            <!-- card -->
-            <div v-for="item in products" :key="item" class="w-full md:w-[48px] lg:w-[23%]
-            shadow-2xl rounded-xl overflow-hidden h-[410px]">
-                <!-- card header -->
-                <div class="w-full h-[70%]">
-                    <img class="w-full h-full object-fit-cover" 
-                    :src="item.image" :alt="item.title">
-                </div>
-                <!-- card body -->
-                <div class="px-3 py-2">
-                    <h1 class="font-bold text-xl">{{ item.title }}</h1>
-                    <p class="font-bold pt-2">$ {{ item.price }}</p>
-                    <!-- button -->
-                    <div class="flex justify-between pt-1">
-                        <button class="bg-red-500 text-white rounded-xl px-3 py-2 cursor-pointer
-                        hover:bg-red-700">Details</button>
-                        <button class="bg-blue-500 text-white rounded-xl px-3 py-2 cursor-pointer
-                        hover:bg-blue-700">Buy Now</button>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <!-- title -->
+    <div class="flex justify-between items-center">
+      <h1 class="font-bold text-3xl">Product List</h1>
 
-        <div class="w-full h-auto bg-pink-300 mt-10 shadow-2xl py-7 px-10 rounded-3xl">
-            <!-- maincard -->
-            <div class="w-full py-7">
-              <!-- card -->
-              <div class="w-full flex justify-between">
-                <!-- left -->
-                <div class="font-bold w-[35%]">
-                  <p>Glow Every Day</p>
-                  <h1 class="text-4xl">Skincare That</h1>
-                  <h1 class="text-4xl"><mark class="bg-pink-300 text-pink-600">Loves</mark> You Back</h1>
-                  <p class="py-2">Flat 20% off on our best-seller products.
-                    <br>Limited time offer!
-                  </p>
-                  <button class="bg-blue-300 hover:bg-blue-600 hover:text-white rounded-3xl px-5 py-2 mt-3 text-black">Show Now</button>
-                </div>  
-                <!-- center -->
-                <div class="w-[40%]">
-                  <img class="w-full rounded-2xl h-60" src="/src/assets/image/categories/image.png" alt="">
-                </div>
-                <!-- right -->
-                <div class="w-[30%] pl-40">
-                  <h1 class="font-bold text-4xl text-pink-600">10K+</h1>
-                  <p>Happy Customers</p>
-                  <h1 class="pt-12 text-4xl font-bold text-pink-600">4.8</h1>
-                  <p>Average Rating </p>
-                </div>
-              </div>
-            </div>
-        </div>
+      <button @click="showAll = !showAll" class="cursor-pointer shadow-xl rounded-xl px-3 py-2 hover:bg-pink-600 hover:text-white">
+        {{ showAll ? 'Show Less' : 'View All' }}
+      </button>
     </div>
+
+    <!-- main card -->
+    <div class="w-full pt-10 flex gap-8 flex-wrap">
+
+      <!-- card -->
+      <div
+        v-for="item in visibleProducts"
+        :key="item.id"
+        class="w-full md:w-[48%] lg:w-[23%] shadow-2xl rounded-xl overflow-hidden h-[410px] bg-white"
+      >
+
+        <!-- card header -->
+        <div class="w-full h-[70%]">
+          <img
+            class="w-full h-full object-cover"
+            :src="item.image"
+            :alt="item.title"
+          >
+        </div>
+
+        <!-- card body -->
+        <div class="px-3 py-2">
+          <h1 class="font-bold text-xl">
+            {{ item.title }}
+          </h1>
+
+          <p class="font-bold pt-2">
+            $ {{ item.price }}
+          </p>
+
+          <!-- button -->
+          <div class="flex justify-between pt-3">
+            <button
+              class="bg-red-500 text-white rounded-xl px-3 py-2 cursor-pointer hover:bg-red-700"
+            >
+              Details
+            </button>
+
+            <button
+              class="bg-blue-500 text-white rounded-xl px-3 py-2 cursor-pointer hover:bg-blue-700"
+            >
+              Buy Now
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
 </template>
+
 <script setup>
-    const products = [
+import { ref, computed } from 'vue'
+
+const showAll = ref(false)
+
+const products = ref([
   {
     id: 1,
     image: "https://images.unsplash.com/photo-1556228720-195a672e8a03",
@@ -114,6 +114,11 @@
     title: "Lip Care Balm",
     price: 8.99
   }
-];
+])
 
+const visibleProducts = computed(() => {
+  return showAll.value
+    ? products.value
+    : products.value.slice(0, 4)
+})
 </script>
